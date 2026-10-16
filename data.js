@@ -1,0 +1,88 @@
+/* Q4Q v3.9 research seed. Legacy scores are UNVALIDATED archival inputs. */
+window.Q4Q_DATA = (() => {
+const roots = [
+["islam","Islam","Abrahamic","Independent religion","Allah, absolute oneness","Al-Qur'an; Hadith","Reference anchor","Divine oneness, revelation, creation and spiritual beings"],
+["judaism","Judaism / Yudaisme","Abrahamic / Israelite","Independent religion","YHWH, one God","Tanakh; rabbinic texts","Independent Israelite tradition","Ancient Israelite monotheism"],
+["christianity","Christianity / Kristen","Abrahamic","Independent religion","One God; Trinity in mainstream theology","Old and New Testaments","Historically linked to Judaism","Internally diverse theology, including non-Trinitarian communities"],
+["samaritan","Samaritanism","Israelite","Independent ethnoreligion","One God, YHWH","Samaritan Pentateuch","Historically related to Judaism","Independent Israelite religious identity"],
+["bahai","Baháʼí Faith","Islamic-origin / Abrahamic-related","Independent religion","One God; progressive revelation","Kitáb-i-Aqdas; Bahá'u'lláh writings","Emerged in historical relation to Bábism","Separate religious identity despite historical relationship"],
+["babism","Bábism","Islamic-origin / Abrahamic-related","Independent historical religion","One God","Persian Bayán; Arabic Bayán","Historical precursor of Baháʼí Faith","Do not count as a Baháʼí denomination"],
+["druze","Druze Faith","Islamic-origin / Ismaili-related","Independent religious tradition","Tawhid / divine unity","Rasā'il al-Ḥikma","Historically emerged from Ismaili context","Strong theology of divine unity; old numeric score needs re-review"],
+["mandaeism","Mandaeism","Mesopotamian / Gnostic","Independent ethnoreligion","Hayyi Rabbi; distinctive cosmology","Ginza Rabba; Qolasta","Independent religious tradition","Distinct spiritual cosmology and textual heritage"],
+["yazidism","Yazidism","Kurdish / West Asian","Independent ethnoreligion","Xwedê, supreme God","Qewls; oral traditions","Independent Kurdish religious tradition","Not a branch of Islam"],
+["zoroastrian","Zoroastrianism","Iranian","Independent religion","Ahura Mazda; diverse scholarship on dualism","Avesta; Gathas","Independent Iranian religious tradition","Historical cosmology, ethical and eschatological concepts"],
+["sikhism","Sikhism","Indian / Sikh","Independent religion","Ik Onkar, one ultimate divine reality","Guru Granth Sahib","Independent South Asian religion","One divine reality; non-Abrahamic lineage"],
+["ravidassia","Ravidassia","Indian / Ravidas-related","Independent identity / community variants","One supreme reality in many communities","Amritbani; Ravidas hymns","Historical relation to Sant traditions","Community self-identification varies"],
+["hinduism","Hinduism","Dharmic / Indian","Family of traditions","Brahman; Ishvara; diverse philosophies","Vedas; Upanishads; Bhagavad Gita","Multiple distinct schools","Never assign single theology across all schools"],
+["buddhism","Buddhism","Dharmic / Indian","Family of traditions","Generally non-creator-centered; diverse cosmology","Tipiṭaka; Chinese and Tibetan canons","Multiple schools","Creator-monotheism may be inapplicable for some schools"],
+["jainism","Jainism","Dharmic / Indian","Independent religion","Generally non-creator-centered","Āgamas; Jain canons","Digambara and Śvetāmbara branches","Distinct non-theistic philosophical and spiritual framework"],
+["kaharingan","Kaharingan","Indigenous / Dayak Ngaju","Indigenous religious tradition","Ranying Hatalla Langit","Panaturan; oral traditions","Ngaju Dayak spiritual heritage","Do not generalize across all Dayak communities"],
+["sundawiwitan","Sunda Wiwitan","Indigenous / Sundanese","Indigenous religious tradition","Varies by community; supreme divine concepts","Oral and community sacred traditions","Distinct Sundanese communities","Must audit community-specific terminology"],
+["tolotang","Tolotang","Indigenous / Bugis","Indigenous religious tradition","Dewata Seuwae","Lontara; Bugis ritual traditions","Distinct Bugis religious tradition","Community-specific practices and theology"],
+["taoism","Taoism / Daoism","East Asian / Chinese","Religion and philosophical traditions","Dao; diverse religious deities and cosmologies","Daodejing; Zhuangzi; Daozang","Independent Chinese traditions","UNIVERSE reference: Dao, cosmic balance and natural order"],
+["shinto","Shinto","East Asian / Japanese","Religious / ritual tradition","Kami; diverse understandings","Kojiki; Nihon Shoki; norito","Japanese religious traditions","RUH reference: kami and spiritual-presence concepts, not simply ghosts"],
+["cheondoism","Cheondoism","East Asian / Korean","Independent modern religion","Hanullim","Donggyeong Daejeon; Yongdam Yusa","Emerged from Donghak movement","Korean divine presence and social ethics"],
+["tenrikyo","Tenrikyo","East Asian / Japanese","Independent new religion","God the Parent","Ofudesaki; Mikagura-uta; Osashizu","Modern Japanese religious movement","Distinct doctrine of God the Parent"],
+["spiritism","Kardecist Spiritism","Modern spiritualist","Religious / spiritual movement","Creator God; spirits and reincarnation","The Spirits' Book; Kardec codification","Distinct modern spiritualist movement","RUH reference: spirit and afterlife teaching"],
+["caodai","Cao Dai","Vietnamese / New religious","Independent religion","Cao Đài, supreme deity","Cao Dai sacred texts","Vietnamese syncretic religion","Diverse spiritual and cosmological symbols"],
+["yoruba","Yoruba religion","Indigenous / West African","Religious tradition","Olódùmarè; òrìṣà","Odu Ifá; oral sacred traditions","Ifá nested as sacred practice","Not identical to Ifá alone"]
+].map(([id,name,family,identity,divine,source,lineage,note])=>({id,name,family,identity,divine,source,lineage,note}));
+const legacy = {
+ islam:[100,100,100],judaism:[95,54.5,95],christianity:[65,45.5,95],
+ samaritan:[95,27.3,90],bahai:[90,45.5,100],babism:[90,27.3,95],
+ druze:[80,18.2,90],mandaeism:[75,18.2,90],yazidism:[85,27.3,75],
+ zoroastrian:[70,27.3,85],sikhism:[90,54.5,100],ravidassia:[85,27.3,90],
+ kaharingan:[90,27.3,85],sundawiwitan:[85,27.3,60],tolotang:[85,27.3,55],
+ cheondoism:[70,27.3,75],tenrikyo:[75,27.3,90],spiritism:[80,36.4,85],
+ caodai:[70,27.3,80],yoruba:[70,27.3,90]
+};
+const minors = [
+ ["sunni","Sunni","islam","Branch / tradition"],
+ ["shia","Shia","islam","Branch / tradition"],
+ ["shafii","Shafi'i school","sunni","Jurisprudential school"],
+ ["catholic","Catholic","christianity","Denomination"],
+ ["orthodox","Eastern Orthodox","christianity","Denomination"],
+ ["protestant","Protestant","christianity","Family of denominations"],
+ ["reform-judaism","Reform Judaism","judaism","Movement"],
+ ["orthodox-judaism","Orthodox Judaism","judaism","Movement"],
+ ["sunni-sufism","Sufi orders (various)","sunni","Spiritual orders / multiple branches"],
+ ["theravada","Theravāda","buddhism","School"],
+ ["mahayana","Mahāyāna","buddhism","Tradition family"],
+ ["vajrayana","Vajrayāna","buddhism","Tradition family"],
+ ["vaishnavism","Vaiṣṇavism","hinduism","Tradition family"],
+ ["shaivism","Śaivism","hinduism","Tradition family"],
+ ["digambara","Digambara","jainism","Branch"],
+ ["svetambara","Śvetāmbara","jainism","Branch"],
+ ["ifa","Ifá divination system","yoruba","Sacred practice / corpus"],
+ ["religious-daoism","Religious Daoist schools","taoism","Schools / movements"],
+ ["shrine-shinto","Shrine Shinto","shinto","Ritual institution / expression"]
+].map(([id,name,parentId,kind])=>({id,name,parentId,kind}));
+const atlas = {
+ islam:{u:"Creation and cosmic order",ru:"Rūḥ; angels; unseen realm",note:"Distinct theological concepts; not reduced to mythology"},
+ judaism:{u:"Creation and heavenly order",ru:"Soul, angels and spiritual tradition",note:"Scriptural, rabbinic and mystical layers differ"},
+ christianity:{u:"Creation and cosmic theology",ru:"Holy Spirit, soul and angels",note:"Doctrine differs by denomination"},
+ samaritan:{u:"Creation narratives",ru:"Sacred spiritual concepts",note:"Distinct Samaritan scriptural interpretation"},
+ bahai:{u:"Unity of creation",ru:"Soul and spiritual reality",note:"Concepts within Baháʼí sources"},
+ babism:{u:"Sacred cosmology",ru:"Spiritual interpretations",note:"Primary text audit needed"},
+ druze:{u:"Cosmological concepts",ru:"Soul and spiritual doctrines",note:"Esoteric tradition; many sources require caution"},
+ mandaeism:{u:"Distinct cosmic realms",ru:"Soul and light-world narratives",note:"Rich cosmology; avoid conflation"},
+ yazidism:{u:"Cosmogonic narratives",ru:"Sacred beings",note:"Oral tradition is authoritative"},
+ zoroastrian:{u:"Cosmic order and struggle",ru:"Fravashi and spiritual teachings",note:"Historical variation in cosmology"},
+ sikhism:{u:"Creation and hukam",ru:"Soul and divine reality",note:"Interpret in Sikh doctrinal context"},
+ ravidassia:{u:"Ultimate reality",ru:"Spiritual liberation",note:"Varies by community"},
+ hinduism:{u:"Brahman and cosmic cycles",ru:"Ātman and diverse doctrines",note:"Multiple schools; avoid single score"},
+ buddhism:{u:"Cosmic realms and cycles",ru:"Rebirth without permanent self in many schools",note:"Avoid translating anātman simply as soul"},
+ jainism:{u:"Eternal cosmos",ru:"Jīva (living soul)",note:"Doctrinally distinct from creator theology"},
+ kaharingan:{u:"Sacred cosmos in Panaturan",ru:"Spiritual beings and ancestral contexts",note:"Dayak Ngaju community context"},
+ sundawiwitan:{u:"Sundanese sacred cosmology",ru:"Ancestral and spiritual customs",note:"Community variations"},
+ tolotang:{u:"Bugis religious cosmology",ru:"Sacred and ancestral relations",note:"Source audit pending"},
+ taoism:{u:"Dao, balance, natural cosmic order",ru:"Spirits, deities and immortality themes",note:"Universe reference; RU also relevant"},
+ shinto:{u:"Sacred origins and nature",ru:"Kami and spirit-presence traditions",note:"Ruh reference; kami not equivalent to human ghosts"},
+ cheondoism:{u:"Human–heaven relations",ru:"Divine presence",note:"Korean religious context"},
+ tenrikyo:{u:"Creation and divine providence",ru:"Human soul doctrines",note:"God the Parent tradition"},
+ spiritism:{u:"Cosmic progress and laws",ru:"Spirits, reincarnation, mediumship",note:"Ruh reference; claims not independently verified"},
+ caodai:{u:"Cosmology and universal teaching",ru:"Spiritual beings and séances",note:"Distinct Vietnamese modern tradition"},
+ yoruba:{u:"Cosmology and creation",ru:"Òrìṣà, ancestors and spiritual practices",note:"Ifá is a nested system"}
+};
+return {roots,legacy,minors,atlas,version:"3.9",targetRoots:75};
+})();
